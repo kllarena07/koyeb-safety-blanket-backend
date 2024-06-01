@@ -53,6 +53,12 @@ retell = Retell(api_key=os.environ["RETELL_API_KEY"])
 twilio_client = TwilioClient()
 twilio_client.register_inbound_agent("+12254173514", "0814f86883b0337bb040580219120f66")
 
+@app.get("/hello")
+async def handle_hello():
+    return {
+        "message": "Hello World!"
+    }
+
 
 # Handle webhook from Retell server. This is used to receive events from Retell server.
 # Including call_started, call_ended, call_analyzed
