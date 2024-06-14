@@ -31,7 +31,10 @@ from firebase import save_user_data, read_user_data
 from firebase_admin import credentials, firestore
 from datetime import datetime, timezone
 
-cred = credentials.Certificate("firebase.json")
+firebase_config = os.getenv("FIREBASE")
+firebase_dict = json.loads(firebase_config)
+
+cred = credentials.Certificate(firebase_dict)
 default_app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
